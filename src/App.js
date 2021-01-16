@@ -9,10 +9,8 @@ function App() {
       <div className="App">
         <Switch>
           {
-            routerArr.map(item => (
-              <Route exact path={item.name}>
-                {item.component}
-              </Route>
+            routerArr.map((item, index) => (
+              <Route exact key={index} path={item.name} component={item.component}/>
             ))
           }
         </Switch>
