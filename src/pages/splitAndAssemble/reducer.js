@@ -1,6 +1,7 @@
 import * as actionType from './actionType'
 
 export default (state = [], action) => {
+
   switch(action.type) {
     case actionType.ADD_SENTENCE:
       return [
@@ -11,8 +12,8 @@ export default (state = [], action) => {
         ...state
       ]
     case actionType.DELETE_SENTENCE:
-      return state.filter(item.id !== action.id)
+      return state.filter(item => item.id !== action.id)
     default: 
-      throw new Error('change sentence reducer is not supported ')
+      return state
   }
 }
