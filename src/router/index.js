@@ -3,13 +3,13 @@ import SplitSentenceTest from '../pages/splitAndAssemble/sentenceTest/index'
 
 const routerArr = [
   {
-    name: 'splitIndex',
+    name: '/splitIndex',
     component: SplitIndex
   },
   {
-    name: 'splitSentenceTest',
+    name: '/splitSentenceTest',
     component: SplitSentenceTest
-  }
+  },
 ]
 
 export default  routerArr

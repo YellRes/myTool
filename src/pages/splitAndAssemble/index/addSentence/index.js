@@ -6,13 +6,21 @@ const SplitAddSentence = ({onAdd}) => {
   const [value, setValue] = useState('')
 
   const onInputChange = (e) => {
-    setValue(e)
+    setValue(e.target.value)
+  }
+
+  const onSubmit = (e = '') => {
+    if (!e.trim()) return 
+
+    onAdd(e)
+
+    setValue('')
   }
 
   return (
     <div>
-      <input value={value} onChange={onInputChange}/>
-      <button onClick={() => onAdd(value)}>添加</button>
+      <textarea value={value} onChange={onInputChange}/>
+      <button onClick={() => onSubmit(value)}>添加</button>
     </div>
   )
 }
