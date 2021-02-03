@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {memo} from 'react'
 import {connect} from 'react-redux'
 
-const SplitSentenceList = ({sentenceList}) => {
+const SplitSentenceList = memo(({sentenceList}) => {
   return (
     <div>
 
@@ -15,7 +15,7 @@ const SplitSentenceList = ({sentenceList}) => {
 
     </div>
   )
-}
+}) 
 
 const mapStateToProps = (state) => {
   return {

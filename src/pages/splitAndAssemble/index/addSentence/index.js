@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
-import {addSentence} from '../../actions'
+import {addSentenceFromRemote, getAllSentenceFromRemote} from '../../actions'
 import {connect} from 'react-redux'
 
-const SplitAddSentence = ({onAdd}) => {
+const SplitAddSentence = ({onAdd, onGetAllCity}) => {
   const [value, setValue] = useState('')
 
   const onInputChange = (e) => {
@@ -12,7 +12,11 @@ const SplitAddSentence = ({onAdd}) => {
   const onSubmit = (e = '') => {
     if (!e.trim()) return 
 
-    onAdd(e)
+    const params = {
+      sentence: e
+    }
+    onAdd(params)
+    onGetAllCity()
 
     setValue('')
   }
@@ -28,7 +32,10 @@ const SplitAddSentence = ({onAdd}) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onAdd: (text) => {
-      dispatch(addSentence(text))
+      dispatch(addSentenceFromRemote(text))
+    },
+    onGetAllCity: () => {
+      dispatch(getAllSentenceFromRemote())
     }
   }
 }

@@ -13,6 +13,8 @@ export default (state = [], action) => {
       ]
     case actionType.DELETE_SENTENCE:
       return state.filter(item => item.id !== action.id)
+    case actionType.GET_ALL_SENTENCE:
+      return [...action.sentenceArr]
     default: 
       return state
   }
