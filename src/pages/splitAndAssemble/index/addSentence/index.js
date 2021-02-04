@@ -15,16 +15,18 @@ const SplitAddSentence = ({onAdd, onGetAllCity}) => {
     type === 2 && setTranslation(e.target.value)
   }
 
-  const onSubmit = (e = '') => {
-    if (!e.trim()) return 
+  const onSubmit = () => {
+    // if (!e.trim()) return 
 
     const params = {
-      sentence: e
+      sentence: value,
+      translation
     }
     onAdd(params)
     onGetAllCity()
 
     setValue('')
+    setTranslation('')
   }
 
   return (
