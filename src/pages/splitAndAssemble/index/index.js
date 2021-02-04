@@ -38,7 +38,7 @@ const SplitIndex = ({history, onGetAllCity, onDeleteSentence}) => {
       <AddSentence/>
       <SentenceList
         showModal={showModal}
-        />
+        /> 
       <Modal 
         title="是否确认" visible={isModalVisible} 
         onOk={handleOk} onCancel={handleCancel}/>
