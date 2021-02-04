@@ -5,6 +5,7 @@ const routerArr = [
   {
     name: '/splitIndex',
     component: SplitIndex
+    
   },
   {
     name: '/splitSentenceTest',
