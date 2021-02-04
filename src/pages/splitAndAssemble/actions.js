@@ -1,21 +1,18 @@
 import * as actionType from './actionType'
 import * as api from '../../api/config'
 
-let sentenceId = 0
-
-export const addSentence = (sentence = '') => (
+export const addSentence = ({sentence = '', _id = ''}) => (
   {
     type: actionType.ADD_SENTENCE,
-    id: sentenceId++,
+    _id,
     sentence
   }
 )
 
-export const deleteSentence = (sentence = '') => (
+export const deleteSentence = (_id = '') => (
   {
     type: actionType.DELETE_SENTENCE,
-    id: sentenceId++,
-    sentence
+    _id,
   }
 )
 
@@ -38,4 +35,11 @@ export const addSentenceFromRemote = (sentence) => {
     await api.addSentenceApi(sentence)
   }
 }
+
+export const deleteSentenceFromRemote = (sentence) => {
+  return async (dispatch) => {
+    await api.deleteSentenceApi(sentence)
+    dispatch(deleteSentence(sentence._id))
+  }
+} 
 

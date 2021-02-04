@@ -3,16 +3,8 @@ import * as actionType from './actionType'
 export default (state = [], action) => {
 
   switch(action.type) {
-    case actionType.ADD_SENTENCE:
-      return [
-        {
-          id: action.id,
-          sentence: action.sentence
-        },
-        ...state
-      ]
     case actionType.DELETE_SENTENCE:
-      return state.filter(item => item.id !== action.id)
+      return state.filter(item => item._id !== action._id)
     case actionType.GET_ALL_SENTENCE:
       return [...action.sentenceArr]
     default: 

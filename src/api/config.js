@@ -11,3 +11,9 @@ export const addSentenceApi = (params) => {
       translation: params.translation
     })
 }
+
+export const deleteSentenceApi = (params) => {
+  return axios.post('/engSentence/deleteSentence', {
+    _id: params._id
+  })
+}
