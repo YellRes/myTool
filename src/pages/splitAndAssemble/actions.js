@@ -36,10 +36,11 @@ export const addSentenceFromRemote = (sentence) => {
   }
 }
 
-export const deleteSentenceFromRemote = (sentence) => {
+export const deleteSentenceFromRemote = (sentenceId) => {
   return async (dispatch) => {
-    await api.deleteSentenceApi(sentence)
-    dispatch(deleteSentence(sentence._id))
+    debugger
+    await api.deleteSentenceApi({sentenceId})
+    dispatch(deleteSentence(sentenceId))
   }
 } 
 

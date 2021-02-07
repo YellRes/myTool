@@ -13,9 +13,10 @@ const SplitIndex = ({history, onGetAllCity, onDeleteSentence}) => {
     history.push('/splitSentenceTest')
   }
 
-  const handleOk = () => {
+  const handleOk = async () => {
     setIsModalVisible(false);
-    !id &&  onDeleteSentence(id)
+    id && await onDeleteSentence(id)
+
   }
 
   const handleCancel = () => {
@@ -24,7 +25,6 @@ const SplitIndex = ({history, onGetAllCity, onDeleteSentence}) => {
 
   const showModal = (id) => {
     setIsModalVisible(true)
-    debugger
     setId(id)
   }
 

@@ -14,6 +14,6 @@ export const addSentenceApi = (params) => {
 
 export const deleteSentenceApi = (params) => {
   return axios.post('/engSentence/deleteSentence', {
-    _id: params._id
+    sentenceId: params.sentenceId
   })
 }
