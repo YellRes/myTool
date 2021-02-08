@@ -1,4 +1,4 @@
-import React, {memo} from 'react'
+import React, {memo, useState} from 'react'
 import {Table} from 'antd'
 import {connect} from 'react-redux'
 import * as actions from '../../actions'
@@ -6,12 +6,26 @@ import './index.css'
 
 const {Column} = Table
 
+const rowSelection = {
+  onChange: () => {
+
+  },
+  getCheckboxProps: item => ({
+    debugger
+  })
+}
 
 
 const SplitSentenceList = memo(({sentenceList, onDeleteSentence, showModal}) => {
+  const [selectionType, setSelectionType] = useState('checkbox')
+
   return (
     <div className="sentence_list">
       <Table 
+        rowSelection={{
+          type: selectionType,
+          ...rowSelection,
+        }}
         dataSource={sentenceList}>
           <Column title="句子"
             render={
