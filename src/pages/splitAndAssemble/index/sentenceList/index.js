@@ -6,26 +6,22 @@ import './index.css'
 
 const {Column} = Table
 
-const rowSelection = {
-  onChange: () => {
-
-  },
-  getCheckboxProps: item => ({
-    debugger
-  })
-}
-
 
 const SplitSentenceList = memo(({sentenceList, onDeleteSentence, showModal}) => {
-  const [selectionType, setSelectionType] = useState('checkbox')
+  // const [selectionType, setSelectionType] = useState('checkbox')
+  const [selectedRowKeys, setSelectedRowKeys] = useState([])
 
+  const rowSelection = {
+    selectedRowKeys,
+    onChange: item => {
+      
+    },
+  }
+  
   return (
     <div className="sentence_list">
       <Table 
-        rowSelection={{
-          type: selectionType,
-          ...rowSelection,
-        }}
+        rowSelection={rowSelection}
         dataSource={sentenceList}>
           <Column title="句子"
             render={
