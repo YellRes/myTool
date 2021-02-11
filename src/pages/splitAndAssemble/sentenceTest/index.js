@@ -50,7 +50,7 @@ const SplitSentenceTest = ({sentenceArr}) => {
       打乱后来重组👍
       <br></br>
       <InputCheck 
-        sentence={sentenceArr[index].sentence}
+        sentence={sentenceArr[index].sentence }
         randomSentence={config(sentenceArr[index].sentence)}/>
       <ButtonInfo  
         nextSentence={nextSentence}

@@ -6,32 +6,26 @@ import {connect} from 'react-redux'
 const { TextArea } = Input
 
 const SplitAddSentence = ({onAdd, onGetAllCity}) => {
-  const [value, setValue] = useState('')
-  const [translation, setTranslation] = useState('')
-
-  const onInputChange = (e, type) => {
-
-    type === 1 && setValue(e.target.value)
-    type === 2 && setTranslation(e.target.value)
-  }
+  const [form] = Form.useForm()
 
   const onSubmit = () => {
-    // if (!e.trim()) return 
 
     const params = {
-      sentence: value,
-      translation
+      sentence: form.getFieldValue('sentence'),
+      translation: form.getFieldValue('translation')
     }
+
     onAdd(params)
     onGetAllCity()
 
-    setValue('')
-    setTranslation('')
+    form.setFieldsValue({sentence: ''})
+    form.setFieldsValue({translation: ''})
   }
 
   return (
     <div>
       <Form
+        form={form}
         onFinish={onSubmit}>
 
       <Form.Item
@@ -39,7 +33,7 @@ const SplitAddSentence = ({onAdd, onGetAllCity}) => {
         name="sentence"
         rules={[{ required: true, message: '请输入句子!' }]}
       >
-          <TextArea value={value} rows={4} onChange={(e) => onInputChange(e, 1)}/>
+          <TextArea  rows={4} />
       </Form.Item>
 
       <Form.Item
@@ -47,7 +41,7 @@ const SplitAddSentence = ({onAdd, onGetAllCity}) => {
         name="translation"
         rules={[{ required: true, message: '请输入句子翻译!' }]}
       >
-          <TextArea value={translation} rows={4} onChange={(e) => onInputChange(e, 2)}/>
+          <TextArea rows={4} />
       </Form.Item>
 
       <Button type="primary" htmlType="submit">添加</Button>

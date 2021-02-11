@@ -38,7 +38,6 @@ export const addSentenceFromRemote = (sentence) => {
 
 export const deleteSentenceFromRemote = (sentenceId) => {
   return async (dispatch) => {
-    debugger
     await api.deleteSentenceApi({sentenceId})
     dispatch(deleteSentence(sentenceId))
   }

@@ -6,24 +6,24 @@ import './index.css'
 
 const {Column} = Table
 
-
 const SplitSentenceList = memo(({sentenceList, onDeleteSentence, showModal}) => {
   // const [selectionType, setSelectionType] = useState('checkbox')
   const [selectedRowKeys, setSelectedRowKeys] = useState([])
 
   const rowSelection = {
     selectedRowKeys,
-    onChange: item => {
-      
+    onSelect: (item, item2, item3) => {
+
+      // setSelectedRowKeys(item3)
     },
   }
   
   return (
     <div className="sentence_list">
       <Table 
-        rowSelection={rowSelection}
         dataSource={sentenceList}>
-          <Column title="句子"
+          <Column 
+            title="句子"
             render={
               item => (
                 <>
@@ -36,6 +36,7 @@ const SplitSentenceList = memo(({sentenceList, onDeleteSentence, showModal}) => 
           <Column
             title="操作"
             key="action"
+            width={120}
             render= { item => (
               <>
                 <a>修改</a>
