@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import AddSentence from './addSentence/index'
 import SentenceList from './sentenceList/index'
+import SentenceFilter from './sentenceFilter/index'
 import * as actions from '../actions'
 import {Button, Modal} from 'antd'
 import {connect} from 'react-redux'
@@ -34,8 +35,12 @@ const SplitIndex = ({history, onGetAllCity, onDeleteSentence}) => {
 
   return (
     <div>
-      <Button onClick={() => toTest(history)}>去测试</Button>
+      <Button
+         style={{margin: '10px 0'}} 
+        onClick={() => toTest(history)}>去测试</Button>
       <AddSentence/>
+      <SentenceFilter/>
+
       <SentenceList
         showModal={showModal}
         /> 

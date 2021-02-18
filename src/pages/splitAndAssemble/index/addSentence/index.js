@@ -12,7 +12,8 @@ const SplitAddSentence = ({onAdd, onGetAllCity}) => {
 
     const params = {
       sentence: form.getFieldValue('sentence'),
-      translation: form.getFieldValue('translation')
+      translation: form.getFieldValue('translation'),
+      createTime: new Date()
     }
 
     onAdd(params)

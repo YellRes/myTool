@@ -5,10 +5,15 @@ export const findAllSentenceApi = () => {
     })
 }
 
+export const findAllSentenceApiBySth = (params) => {
+  return axios.post('/engSentence/findSentenceBySth', {
+    ...params
+  })
+}
+
 export const addSentenceApi = (params) => {
     return axios.post('/engSentence/addSentence', {
-      sentence: params.sentence,
-      translation: params.translation
+      ...params
     })
 }
 

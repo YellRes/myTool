@@ -30,6 +30,13 @@ export const getAllSentenceFromRemote = () => {
   }
 }
 
+export const getAllSentenceFromRemoteBySth = (params) => {
+  return async (dispatch) => {
+    let sentenceArr = await api.findAllSentenceApiBySth(params)
+    dispatch(getAllSentence(sentenceArr && sentenceArr.data))
+  }
+}
+
 export const addSentenceFromRemote = (sentence) => {
   return async (dispatch) => {
     await api.addSentenceApi(sentence)
