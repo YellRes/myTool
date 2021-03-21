@@ -1,0 +1,8 @@
+.img_container {
+    display: flex;
+}
+
+.img_width {
+    width: 100%;
+    filter: blur(3px);
+}
