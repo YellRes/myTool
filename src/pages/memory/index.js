@@ -11,8 +11,7 @@ const memoryTree = (props) => {
   return (
     <>
     {
-      // Math.random() > .5 ? < BgGrey/> :  <BgSunny /> 
-      'just the memory'
+      Math.random() > .5 ? < BgGrey/> :  <BgSunny /> 
     }
             
     </>
