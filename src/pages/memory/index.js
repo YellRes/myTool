@@ -7,11 +7,13 @@ import BgSunny from './sunbg/components/bgSunny/index'
 // TODO: TreeNode
 
 const memoryTree = (props) => {
-
+  
   return (
     <>
-        {/* < BgGrey/> */}
-        <BgSunny />
+    {
+      Math.random() > .5 ? < BgGrey/> :  <BgSunny /> 
+    }
+            
     </>
   )
 
