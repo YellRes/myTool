@@ -1,4 +1,6 @@
 import React from 'react';
+import BgGrey from './sunbg/components/bgGrey/index'
+import BgSunny from './sunbg/components/bgSunny/index'
 
 // TODO: TreePoint
 // TODO: TreeBranch
@@ -8,15 +10,8 @@ const memoryTree = (props) => {
 
   return (
     <>
-      {
-        props.map(item => (
-          <>
-            <TreePoint/>
-            <TreeBranch/>
-            <TreeNode/>
-          </>
-        ))
-      }
+        {/* < BgGrey/> */}
+        <BgSunny />
     </>
   )
 
