@@ -11,6 +11,6 @@ const BgSunny = () => {
       </div>
     </BgContainer>
   )
-}
+} 
 
 export default BgSunny
