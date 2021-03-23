@@ -49,6 +49,8 @@
   box-shadow:0 150px 0 1px #f90,0 -150px 0 1px #f90;
   }
 
+  .sun {animation:run 30s linear infinite;}
+
 
 @keyframes run {
   to {transform:rotate(360deg);}
