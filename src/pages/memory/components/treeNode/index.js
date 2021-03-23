@@ -1,4 +1,5 @@
 import React from 'react'
+import './index.css'
 
 const TreeNode = (props) => {
   let head
@@ -13,16 +14,23 @@ const TreeNode = (props) => {
     ...otherProps
   } = props
   
-  coverImg = imgUrl ? <img src={imgUrl}/> : <img/>
-  head = title ? <div>{title}</div> : null
-  body = description ? <div>{description}</div> : null
+  coverImg = 
+  imgUrl ? <div className="tree_img_container"> <img src={imgUrl} className="treeN_img"/> </div>: null
+  head = title ? <div className="treeN_title">{title}</div> : null
+  body = description ? <div className="treeN_description">{description}</div> : null
+
+  let container = (
+    <div className="treeN_container_right">
+      {head}
+      {body}
+      {children}
+    </div>
+  )
   
   return (
-    <div {...otherProps}>
-      <coverImg/>
-      <head/>
-      <body/>
-      <children/>
+    <div {...otherProps} className="treeN_container">
+        {coverImg}
+        {container}
     </div>
   )
 }

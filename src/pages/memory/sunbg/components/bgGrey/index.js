@@ -74,7 +74,6 @@ const BgGrey = () => {
     }
 
     function anim(ctx) {
-      console.log(ctx, 'ctx is here')
       ctx.clearRect(0, 0, w, h)
 
 
