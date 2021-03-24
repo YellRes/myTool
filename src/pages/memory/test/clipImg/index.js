@@ -20,8 +20,8 @@ const ClipImgItem = (props) => {
         Array(8).fill().map( (_, index) => (
           
             selectedIndexArr.includes(index) 
-            ? <div className={`clip_item_item item_${index} `} style={bgObj}></div> 
-            : <div className={`clip_item_item`}></div>
+            ? <div key={index} className={`clip_item_item item_${index} `} style={bgObj}></div> 
+            : <div key={index} className={`clip_item_item`}></div>
           
         ))
       }
@@ -49,12 +49,12 @@ const KeyBoard = (props) => {
 
   const {selectedIndexArr = [], changeSelectedArr} = props
 
-
   return (
     <div className={'keyboard_con'}>
       {
-        arr.map((item, index) => (
+        Array(8).fill().map((item, index) => (
           <KeyBoardItem
+            key={index}
             selected={selectedIndexArr.includes(index)}
             value={index}
             changeSelectedArr={changeSelectedArr}/>
@@ -69,7 +69,15 @@ const ClipImg = () => {
   let [imgSelected, setImgSelect] = useState([])
 
   const setSelect = (value) => {
-    setImgSelect([...imgSelected, value])
+    console.log(value, 'value')
+    if (imgSelected.includes(value)) {
+
+      return setImgSelect(imgSelected.filter(item => item !== value))
+    } else {
+      setImgSelect([...imgSelected, value])
+    }
+    
+    
   }
   
   return (
