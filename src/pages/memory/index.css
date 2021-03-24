@@ -9,8 +9,35 @@
   justify-content: center;
 }
 
+.memory_title {
+  width: 200px;
+  height: 100px;
+  background-color: cyan;
+  border-radius: 14px;
+}
+
 .memory_time {
   height: 100%;
   background: #f1f1f1;
   width: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.memory_time_1 {
+  position: relative;
+  transform: translateX(86px);
+
+}
+
+.memory_time_1::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 14px;
+  height: 100%;
+  width: 10px;
+  background-color: orange;
+  z-index: 1;
 }

@@ -1,0 +1,13 @@
+.treePoint_container {
+  width: 40px;  
+  height: 40px;
+  font-size: 20px;
+  border-radius: 50%;
+  border: 1px solid skyblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  z-index: 2;
+}
+

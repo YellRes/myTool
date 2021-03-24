@@ -11,6 +11,7 @@ const TreeNode = (props) => {
     description,
     imgUrl,
     children,
+    className,
     ...otherProps
   } = props
   
@@ -20,7 +21,7 @@ const TreeNode = (props) => {
   body = description ? <div className="treeN_description">{description}</div> : null
 
   let container = (
-    <div className="treeN_container_right">
+    <div className={`treeN_container_right`} >
       {head}
       {body}
       {children}
@@ -28,7 +29,7 @@ const TreeNode = (props) => {
   )
   
   return (
-    <div {...otherProps} className="treeN_container">
+    <div {...otherProps} className= {`treeN_container ${className}`} >
         {coverImg}
         {container}
     </div>

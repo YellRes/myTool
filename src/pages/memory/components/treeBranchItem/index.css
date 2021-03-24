@@ -1,0 +1,10 @@
+.branch_item {
+  display: flex;
+  align-items: center;
+}
+
+
+.branch_item_node {
+  margin-left: 20px;
+  flex: 1;
+}
