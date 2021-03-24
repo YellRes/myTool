@@ -1,0 +1,9 @@
+.item {
+  background-image: url('../../../assests/doctorCY.png')
+}
+
+@mixin item_setting($top, $left, $posX, $posY) {
+  top: top;
+  left: left;
+  background-position: posx posY;
+}

@@ -1,7 +1,7 @@
 import SplitIndex from '../pages/splitAndAssemble/index/index'
 import SplitSentenceTest from '../pages/splitAndAssemble/sentenceTest/index'
-import MyCanvas from '../pages/memory/index'
 import Memory from '../pages/memory/index'
+import ClipImg from '../pages/memory/test/clipImg/index'
 
 const routerArr = [
   {
@@ -13,12 +13,12 @@ const routerArr = [
     component: SplitSentenceTest
   },
   {
-    name: '/myCanvas',
-    component: MyCanvas
-  },
-  {
     name: '/memory',
     component: Memory
+  },
+  {
+    name: '/test',
+    component: ClipImg
   }
 ]
 
