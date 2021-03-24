@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import './index.less'
 import bg from '../../../../assests/doctorCY.png'
 
@@ -33,11 +33,12 @@ const ClipImgItem = (props) => {
 const KeyBoardItem = (props) => {
   const {
     value,
-    selected
+    selected,
+    changeSelectedArr
   } = props
 
   return (
-    <div className={`keyboard_item ${selected ? 'selected_orange' : ''} `} >
+    <div className={`keyboard_item ${selected ? 'selected_orange' : ''} `} onClick={() => changeSelectedArr(value)}>
       {value}
     </div>
   )
@@ -46,16 +47,17 @@ const KeyBoardItem = (props) => {
 // 键盘
 const KeyBoard = (props) => {
 
-  const {} = props
+  const {selectedIndexArr = [], changeSelectedArr} = props
 
 
   return (
     <div className={'keyboard_con'}>
       {
-        arr.map(item => (
+        arr.map((item, index) => (
           <KeyBoardItem
-            onClick={() => {}}
-            value={item}/>
+            selected={selectedIndexArr.includes(index)}
+            value={index}
+            changeSelectedArr={changeSelectedArr}/>
         ))
       }
     </div>
@@ -64,14 +66,19 @@ const KeyBoard = (props) => {
 
 const ClipImg = () => {
 
+  let [imgSelected, setImgSelect] = useState([])
+
+  const setSelect = (value) => {
+    setImgSelect([...imgSelected, value])
+  }
   
   return (
     <>
       <ClipImgItem
-        imgUrl={bg}/>
+        imgUrl={bg}
+        selectedIndexArr={imgSelected}/>
 
-
-      <KeyBoard/>
+      <KeyBoard selectedIndexArr={imgSelected} changeSelectedArr={setSelect}/>
     </>
   )
 }
