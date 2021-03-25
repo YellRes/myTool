@@ -1,8 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import './index.less'
+import React, { useState, memo} from 'react'
 import bg from '../../../../assests/doctorCY.png'
+import {connect} from 'react-redux'
+import * as imgReducer from './reducer'
+import './index.less'
 
-let arr = [1, 2, 3, 4, 5, 6, 7, 8]
+const {actionType, actions} = imgReducer
+const arr = Array(8).fill()
 
 const ClipImgItem = (props) => {
   const {
@@ -17,7 +20,7 @@ const ClipImgItem = (props) => {
   return (
     <div className="clip_img_con"  >
       {
-        Array(8).fill().map( (_, index) => (
+        arr.map( (_, index) => (
           
             selectedIndexArr.includes(index) 
             ? <div key={index} className={`clip_item_item item_${index} `} style={bgObj}></div> 
@@ -30,63 +33,109 @@ const ClipImgItem = (props) => {
   )   
 }
 
+const mapStateToPropsClipImgItem = (state) => {
+  return {
+    selectedIndexArr: state.clipImg
+  }
+} 
+
+const ConnectedClipImgItem = connect(mapStateToPropsClipImgItem, null)(ClipImgItem)
+
+// 键盘单个 按钮 1 ~ 8
 const KeyBoardItem = (props) => {
   const {
     value,
     selected,
-    changeSelectedArr
+    addSelectedArr,
+    deleteSelectedArr
   } = props
 
+  const changeSelectedArr = (val) => {
+    !selected && addSelectedArr(val)
+    selected && deleteSelectedArr(val)
+  }
+
   return (
-    <div className={`keyboard_item ${selected ? 'selected_orange' : ''} `} onClick={() => changeSelectedArr(value)}>
+    <div 
+      className={`keyboard_item ${selected ? 'selected_orange' : ''} `} 
+      onClick={() => changeSelectedArr(value)}>
       {value}
     </div>
   )
 } 
+// const KeyBoardItemMemo = memo(KeyBoardItem)
+
 
 // 键盘
+// 数组变化 每次都要重新渲染一遍 所有的组件
 const KeyBoard = (props) => {
 
-  const {selectedIndexArr = [], changeSelectedArr} = props
+  const {selectedIndexArr, deleteSelectedArr, addSelectedArr} = props
+
+  console.log(deleteSelectedArr);
+  console.log(addSelectedArr);
 
   return (
-    <div className={'keyboard_con'}>
+    <div className={'keyboard_con'} >
       {
-        Array(8).fill().map((item, index) => (
+        arr.map((item, index) => (
           <KeyBoardItem
             key={index}
             selected={selectedIndexArr.includes(index)}
             value={index}
-            changeSelectedArr={changeSelectedArr}/>
+            deleteSelectedArr={deleteSelectedArr}
+            addSelectedArr={addSelectedArr}
+            />
         ))
       }
     </div>
   )
+
 }
+// const KeyBoardMemo = memo(KeyBoard)
+
+const mapStateToPropsKeyBoard = (state) => {
+  return {
+    selectedIndexArr: state.clipImg
+  }
+} 
+
+const mapDispatchToPropsKeyBoard = (dispatch) => {
+  return {
+    addSelectedArr: (val) => {
+      dispatch(actions.addImgArr(val))
+    },
+    deleteSelectedArr: (val) => {
+      dispatch(actions.deleteImgArr(val))
+    }
+  }
+} 
+
+const ConnectedKeyBoard = connect(mapStateToPropsKeyBoard, mapDispatchToPropsKeyBoard)(KeyBoard)
 
 const ClipImg = () => {
 
-  let [imgSelected, setImgSelect] = useState([])
+  // let [imgSelected, setImgSelect] = useState([])
 
-  const setSelect = (value) => {
-    console.log(value, 'value')
-    if (imgSelected.includes(value)) {
+  // const setSelect = (value) => {
+  //   console.log(value, 'value')
+  //   if (imgSelected.includes(value)) {
 
-      return setImgSelect(imgSelected.filter(item => item !== value))
-    } else {
-      setImgSelect([...imgSelected, value])
-    }
+  //     return setImgSelect(imgSelected.filter(item => item !== value))
+  //   } else {
+  //     setImgSelect([...imgSelected, value])
+  //   }
     
     
-  }
+  // }
   
   return (
     <>
-      <ClipImgItem
-        imgUrl={bg}
-        selectedIndexArr={imgSelected}/>
+      <ConnectedClipImgItem
+        imgUrl={bg}/>
 
-      <KeyBoard selectedIndexArr={imgSelected} changeSelectedArr={setSelect}/>
+      <ConnectedKeyBoard />
+
     </>
   )
 }
